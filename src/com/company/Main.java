@@ -3,15 +3,15 @@ package com.company;
 public class Main {
 
     public static void main(String[] args) {
-	homework_1();
-	homework_2();
-	homework_3();
-	homework_4();
+        homework_1();
+        homework_2();
+        homework_3();
+        homework_4();
 
-    int[] array = {1, 2, 3, 4, 10, 6};
-    System.out.println(homework_5(array));
+        int[] array = {1, 2, 3, 4, 1, 6};
+        System.out.println(homework_5(array));
 
-    homework_6();
+        homework_6();
 
     }
     static void homework_1() {
@@ -20,12 +20,10 @@ public class Main {
                 System.out.print(j + " ");
             System.out.println();
         }
-        int t = 0;
         for (int i = 1; i <= 5; i++) {
             for (int j = 1; j <= 5; j++)
-                System.out.print(j + t + " ");
+                System.out.print(j + i + " ");
             System.out.println();
-            t++;
         }
     }
     static void homework_2() {
@@ -41,7 +39,6 @@ public class Main {
                 M = M + 1
             end loop
         end loop
-
         output FLAG
          */
         int[] array1 = {1,2,3,4,5};
@@ -77,17 +74,19 @@ public class Main {
         for (int row = 1; row <= 6; row++) {
             for (int stars = 1; stars <= row; stars++)
                 System.out.print("*");
-                for (int dashes = 1; dashes <= 6 - row; dashes++)
-                    System.out.print("-");
+            for (int dashes = 1; dashes <= 6 - row; dashes++)
+                System.out.print("-");
             System.out.println();
         }
     }
 
     static boolean homework_5(int[] numbers) {
-        for (int i = 0; i < numbers.length; i++)
-            for (int j = 0; j < numbers.length && j != i; j++)
-                if (numbers[i] == numbers[j])
+        for (int i = 0; i < numbers.length; i++) {
+            for (int j = 0; j < numbers.length ; j++) {
+                if (numbers[i] == numbers[j] && j != i)
                     return false;
+            }
+        }
         return true;
     }
 
@@ -95,23 +94,19 @@ public class Main {
         int[] a = {4, 4, 6, 11, -2, 3};
         int[] b = {5, 11, 11, -3, 3, 5};
 
-        for (int num1 : a) {
-            int counter = 0;
-            for (int num2 : b)
-                if (num1 != num2)
-                    counter++;
-            if (counter == b.length)
-                System.out.print(num1 + " ");
-        }
+        for (int number : a)
+            compare(number, b);
 
-        for (int num1 : b) {
-            int counter = 0;
-            for (int num2 : a)
-                if (num1 != num2)
-                    counter++;
-            if (counter == a.length)
-                System.out.print(num1 + " ");
+        for (int number : b)
+            compare(number, a);
+    }
+
+    static void compare(int num1, int[] array) {
+        for (int num2 : array) {
+            if (num1 == num2)
+                return;
         }
+        System.out.print(num1 + " ");
     }
 
 }
